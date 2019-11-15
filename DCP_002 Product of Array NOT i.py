@@ -50,17 +50,17 @@ def product_of_array_not_i_no_division(arr):
 
 t1a = time.time()
 for a in range(1):
-    product_of_array_not_i(list(x for x in range(1, 500)))
+    product_of_array_not_i(list(range(1, 500)))
 t1b = time.time()
 
 t2a = time.time()
 for a in range(1):
-    product_of_array_not_i_no_division(list(x for x in range(1, 500)))
+    product_of_array_not_i_no_division(list(range(1, 500)))
 t2b = time.time()
 
 print((t1b - t1a))
 print((t2b - t2a))
 
-print(product_of_array_not_i(list(x for x in range(1, 5))))
-print(product_of_array_not_i_no_division(list(x for x in range(1, 5))))
+print(product_of_array_not_i(list(range(1, 5))))
+print(product_of_array_not_i_no_division(list(range(1, 5))))
 
