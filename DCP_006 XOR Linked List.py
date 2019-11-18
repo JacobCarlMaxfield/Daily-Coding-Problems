@@ -12,6 +12,7 @@ you can assume you have access to get_pointer and dereference_pointer functions
 that converts between nodes and memory addresses.
 """
 
+
 class Node:
     def __init__(self, val, both=[None, None]):
         self.val = val
@@ -45,4 +46,4 @@ print(node.add(324))
 print(node.add(43))
 
 print(node.get(-1))
-
+int()
