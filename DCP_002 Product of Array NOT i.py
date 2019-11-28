@@ -15,14 +15,23 @@ Follow-up: what if you can't use division?
 import time
 
 
-def product_of_array_not_i(arr):
-    total_product = 1
-    for num in arr:
-        total_product *= num
-    return_array = []
-    for i in range(len(arr)):
-        return_array.append(total_product // arr[i])
-    return return_array
+def product_of_array_not_i(nums):
+    prod_array = [0] * len(nums)
+    prod = 1
+    for num in nums:
+        if num == 0:
+            continue
+        prod *= num
+    if nums.count(0) > 1:
+        return prod_array
+    if nums.count(0) == 1:
+        prod_array[nums.index(0)] = prod
+        return prod_array
+    prod_array = []
+    for number in nums:
+        prod_array.append(prod//number)
+    return prod_array
+        
 
 
 # original Idea
@@ -50,17 +59,14 @@ def product_of_array_not_i_no_division(arr):
 
 t1a = time.time()
 for a in range(1):
-    product_of_array_not_i(list(range(1, 500)))
+    product_of_array_not_i(list(range(1, 15000)))
 t1b = time.time()
 
 t2a = time.time()
 for a in range(1):
-    product_of_array_not_i_no_division(list(range(1, 500)))
+    product_of_array_not_i_no_division(list(range(1, 1500)))
 t2b = time.time()
 
 print((t1b - t1a))
 print((t2b - t2a))
-
-print(product_of_array_not_i(list(range(1, 5))))
-print(product_of_array_not_i_no_division(list(range(1, 5))))
 
