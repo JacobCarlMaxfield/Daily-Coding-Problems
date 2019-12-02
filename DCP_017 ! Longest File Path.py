@@ -44,36 +44,22 @@ The name of a file contains at least a period and an extension.
 
 The name of a directory or sub-directory will not contain a period.
 """
-from collections import defaultdict
-def longest_file_path(dir):
-    if dir.count('.') == 0:
-        return 0
-    directory = dir
-    subdirfiles = directory.count('\n')
-    tabs = directory.count('\t')
-
-    longest_directory_depth = 0
-    dir_search = '\n\t'
-    while directory.count(dir_search) > 0:
-        longest_directory_depth += 1
-        dir_search += '\t'
-    print(longest_directory_depth)
-    
-    print(subdirfiles, tabs)
-    directory = directory.split('\n')
+def lengthLongestPath(input):
+        lvl = {-1: 0}
+        max_len = 0
         
-
-    print(directory)
-    x = 0
-    while x < len(directory):
-        if '.' not in directory[x]:
-            print(directory[x])
-            del directory[x]
-        else:
-            x += 1
-    print(directory)
+        for line in input.split('\n'):
+            print(line)
+            depth = line.count('\t')
+            print(len(line))
+            lvl[depth] = len(line) - depth + lvl[depth - 1]
+            
+            if '.' in line:
+                max_len = max(max_len, lvl[depth] + depth)
+        
+        return max_len
 
 
 directory = "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext" 
 
-print(longest_file_path(directory))
+print(lengthLongestPath(directory))
