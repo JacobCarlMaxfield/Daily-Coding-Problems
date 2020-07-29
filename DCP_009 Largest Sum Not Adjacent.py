@@ -1,0 +1,23 @@
+"""
+Good morning! Here's your coding interview problem for today.
+
+This problem was asked by Airbnb.
+
+Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.
+
+For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+
+Follow-up: Can you do this in O(N) time and constant space?
+"""
+
+def greatest_sum_distance(list, k=2):
+    maxs = [0] * k
+    for i in list:
+        maxs[:-1], maxs[-1] = maxs[1:], max(maxs[-k]+i, maxs[-1])
+    return maxs[-1]
+
+print(greatest_sum_distance([2, 4, 6, 2, 5]))
+print(greatest_sum_distance([2, 4, 6, 2, 5], 1))
+print(greatest_sum_distance([2, 4, 6, 2, 3], 4))
+print(greatest_sum_distance([5, 1, 1, 5], 4))
+
