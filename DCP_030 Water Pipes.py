@@ -19,13 +19,12 @@ def water_pipes(pipes):
         return 0
     total = 0
     
-    high_index = 0
     high = pipes[0]
     pipes_included = []
-    x = max(pipes[high_index+1:])
+    x = max(pipes[1:])
     for pipe in pipes[1:]:
         if x <= high:
-            high = max(pipes[high_index+1:])
+            high = max(pipes[1:])
         if pipe >= high:
             total += (high * len(pipes_included)) - sum(pipes_included)
             pipes_included = []
@@ -35,6 +34,6 @@ def water_pipes(pipes):
     return total
 
 
-print(water_pipes([3, 0, 1, 3, 0, 5]))
+print(water_pipes([7, 0, 1, 3, 6, 5]))
 print(water_pipes([2, 1, 2]))
 print(water_pipes([6]))
